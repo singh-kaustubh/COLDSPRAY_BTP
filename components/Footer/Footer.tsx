@@ -19,11 +19,11 @@ export default function Footer(props: FooterProps) {
   const { whiteFont } = props;
   const footerClasses = classNames({
     [classes.footer]: true,
-    [classes.footerWhiteFont]: whiteFont
+    [classes.footerWhiteFont]: whiteFont,
   });
   const aClasses = classNames({
     [classes.a]: true,
-    [classes.footerWhiteFont]: whiteFont
+    [classes.footerWhiteFont]: whiteFont,
   });
   return (
     <footer className={footerClasses}>
@@ -31,40 +31,16 @@ export default function Footer(props: FooterProps) {
         <div className={classes.left}>
           <List className={classes.list}>
             <ListItem className={classes.inlineBlock}>
-              <a
-                href="https://www.creative-tim.com/?AFFILIATE=128200"
-                className={classes.block}
-                target="_blank"
-              >
-                Creative Tim
-              </a>
+              <a className={classes.block}>Creative Team</a>
             </ListItem>
             <ListItem className={classes.inlineBlock}>
-              <a
-                href="https://www.creative-tim.com/presentation?AFFILIATE=128200"
-                className={classes.block}
-                target="_blank"
-              >
-                About us
-              </a>
+              <a className={classes.block}>About us</a>
             </ListItem>
             <ListItem className={classes.inlineBlock}>
-              <a
-                href="http://blog.creative-tim.com/?AFFILIATE=128200"
-                className={classes.block}
-                target="_blank"
-              >
-                Blog
-              </a>
+              <a className={classes.block}>Blog</a>
             </ListItem>
             <ListItem className={classes.inlineBlock}>
-              <a
-                href="https://www.creative-tim.com/license?AFFILIATE=128200"
-                className={classes.block}
-                target="_blank"
-              >
-                Licenses
-              </a>
+              <a className={classes.block}>Licenses</a>
             </ListItem>
           </List>
         </div>
@@ -72,13 +48,28 @@ export default function Footer(props: FooterProps) {
           &copy; {1900 + new Date().getYear()} , made with{" "}
           <Favorite className={classes.icon} /> by{" "}
           <a
-            href="https://www.creative-tim.com?AFFILIATE=128200"
+            href="https://www.linkedin.com/in/kaustubh-singh-19573a1a6/"
             className={aClasses}
             target="_blank"
           >
-            Creative Tim
+            Kaustubh
+          </a>
+          {", "}
+          <a
+            href="https://www.linkedin.com/in/khushimalviya/"
+            className={aClasses}
+            target="_blank"
+          >
+            Khushi
+          </a>
+          {", "}
+          <a
+            href="https://www.linkedin.com/in/pranshu-mehra/"
+            className={aClasses}
+            target="_blank"
+          >
+            Pranshu
           </a>{" "}
-          for a better web.
         </div>
       </div>
     </footer>
@@ -86,5 +77,5 @@ export default function Footer(props: FooterProps) {
 }
 
 export interface FooterProps {
-  whiteFont?: boolean
-};
+  whiteFont?: boolean;
+}

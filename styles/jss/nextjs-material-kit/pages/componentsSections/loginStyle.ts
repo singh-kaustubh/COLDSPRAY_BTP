@@ -12,11 +12,19 @@ const loginStyle = {
     border: "0",
     display: "flex",
     alignItems: "center",
-    backgroundImage: "url('/img/sign.jpg')"
+    backgroundImage: "url('/img/bgcspray.jpg')",
   },
-  container,
+  poster: {
+    height: "703px",
+    width: "400px",
+    // borderRadius: "6px",
+  },
+  container: {
+    // justify: "center",
+  },
   form: {
-    margin: "0"
+    margin: "0",
+    display: "flex",
   },
   cardHeader: {
     width: "auto",
@@ -25,7 +33,7 @@ const loginStyle = {
     marginRight: "20px",
     marginTop: "-40px",
     padding: "20px 0",
-    marginBottom: "15px"
+    marginBottom: "15px",
   },
   socialIcons: {
     maxWidth: "24px",
@@ -36,27 +44,30 @@ const loginStyle = {
     top: "0",
     height: "100%",
     lineHeight: "41px",
-    fontSize: "20px"
+    fontSize: "20px",
   },
   divider: {
     marginTop: "30px",
     marginBottom: "0px",
-    textAlign: "center"
+    textAlign: "center",
+    fontSize: "20px",
+    fontWeight: "bold",
+    color: "grey",
   },
   cardFooter: {
     paddingTop: "0rem",
     border: "0",
     borderRadius: "6px",
-    justifyContent: "center !important"
+    justifyContent: "center !important",
   },
   socialLine: {
     marginTop: "1rem",
     textAlign: "center",
-    padding: "0"
+    padding: "0",
   },
   inputIconsColor: {
-    color: "#495057"
-  }
+    color: "#495057",
+  },
 };
 
 export default loginStyle;
