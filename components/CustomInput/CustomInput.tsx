@@ -18,30 +18,33 @@ export default function CustomInput(props: CustomInputProps) {
     formControlProps,
     labelText,
     id,
+    value,
     labelProps,
     inputProps,
+    onChange,
     error,
+    name,
     white,
     inputRootCustomClasses,
-    success
+    success,
   } = props;
 
   const labelClasses = classNames({
     [" " + classes.labelRootError]: error,
-    [" " + classes.labelRootSuccess]: success && !error
+    [" " + classes.labelRootSuccess]: success && !error,
   });
   const underlineClasses = classNames({
     [classes.underlineError]: error,
     [classes.underlineSuccess]: success && !error,
     [classes.underline]: true,
-    [classes.whiteUnderline]: white
+    [classes.whiteUnderline]: white,
   });
   const marginTop = classNames({
-    [inputRootCustomClasses]: inputRootCustomClasses !== undefined
+    [inputRootCustomClasses]: inputRootCustomClasses !== undefined,
   });
   const inputClasses = classNames({
     [classes.input]: true,
-    [classes.whiteInput]: white
+    [classes.whiteInput]: white,
   });
   var formControlClasses;
   if (formControlProps !== undefined) {
@@ -68,9 +71,13 @@ export default function CustomInput(props: CustomInputProps) {
           input: inputClasses,
           root: marginTop,
           disabled: classes.disabled,
-          underline: underlineClasses
+          underline: underlineClasses,
         }}
         id={id}
+        required={true}
+        value={value}
+        onChange={onChange}
+        name={name}
         {...inputProps}
       />
     </FormControl>
@@ -85,6 +92,9 @@ export interface CustomInputProps {
   formControlProps?: any;
   inputRootCustomClasses?: string;
   error?: boolean;
+  value?: number;
   success?: boolean;
   white?: boolean;
-};
+  onChange?: Function;
+  name?: string;
+}

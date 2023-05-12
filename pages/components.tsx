@@ -26,7 +26,6 @@ export default function Components(props) {
           height: 400,
           color: "white",
         }}
-        // className={classes.navbar}
         {...rest}
       />
       <Parallax image="/img/landing-bg.jpg">

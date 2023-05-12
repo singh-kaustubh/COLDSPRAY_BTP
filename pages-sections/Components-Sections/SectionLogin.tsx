@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
+import axios from "axios";
 // core components
 import GridContainer from "../../components/Grid/GridContainer";
 import GridItem from "../../components/Grid/GridItem";
@@ -12,37 +13,56 @@ import CustomInput from "../../components/CustomInput/CustomInput";
 import styles from "../../styles/jss/nextjs-material-kit/pages/componentsSections/loginStyle";
 
 const useStyles = makeStyles(styles);
-export default function SectionLogin() {
-  const [data, setData] = useState<object>({
-    density: 0,
-    temperature: 0,
-    pressure: 0,
-    specificHeat: 0,
-    divergentLength: 0,
-    particleSize: 0,
-    thermalConductivity: 0,
-  });
-  const [finalOutput, setFinalOutput] = useState<object>({
-    outVelocity: 0,
-    outTemperature: 0,
-  });
-  const handleSubmit = async (e: { preventDefault: () => void }) => {
-    e.preventDefault();
-    window.alert(
-      `The predicted values are Velocity:${finalOutput.outVelocity} and Temperature:${finalOutput.outTemperature}`
-    );
-    // const res = await fetch("....");
-    // const out = await res.json();
-    // setFinalOutput({
-    //   outVelocity: out.velocity,
-    //   outTemperature: out.temperature,
-    // });
-    console.log("first", 2);
-  };
-  const onChange = (e) => {
-    setData({ ...data, [e.target.name]: e.target.value });
-  };
 
+type ModelOutput = {
+  predictionvel: number;
+  predictiontemp: number;
+};
+
+export default function SectionLogin() {
+  const [density, setDensity] = useState<number>();
+  const [temperature, setTemperature] = useState<number>();
+  const [pressure, setPressure] = useState<number>();
+  const [specificHeat, setSpecificHeat] = useState<number>();
+  const [thermalConductivity, setThermalConductivity] = useState<number>();
+  const [particleSize, setParticleSize] = useState<number>();
+  const [divergentLength, setDivergentLength] = useState<number>();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const input = {
+      SpecificHeat: specificHeat,
+      ThConductivity: thermalConductivity,
+      Density: density,
+      ParticleSize: particleSize,
+      Pressure: pressure,
+      Temperature: temperature,
+      DivergentLength: divergentLength,
+    };
+    const response = await axios.post<ModelOutput>("/api/callModel", input);
+
+    window.alert(
+      `Velocity:${response.data.predictionvel.toPrecision(
+        6
+      )} m/s and Temperature:${response.data.predictiontemp.toPrecision(6)} K`
+    );
+  };
+  const handleChange = (e) => {
+    if (e.target.name == "density") {
+      setDensity(e.target.value);
+    } else if (e.target.name == "temperature") {
+      setTemperature(e.target.value);
+    } else if (e.target.name == "pressure") {
+      setPressure(e.target.value);
+    } else if (e.target.name == "thermalConductivity") {
+      setThermalConductivity(e.target.value);
+    } else if (e.target.name == "particleSize") {
+      setParticleSize(e.target.value);
+    } else if (e.target.name == "divergentLength") {
+      setDivergentLength(e.target.value);
+    } else if (e.target.name == "specificHeat") {
+      setSpecificHeat(e.target.value);
+    }
+  };
   const classes = useStyles();
   return (
     <div className={classes.section}>
@@ -50,11 +70,7 @@ export default function SectionLogin() {
         <GridContainer justify="center">
           <GridItem xs={12} sm={6} md={4}>
             <Card>
-              <form
-                className={classes.form}
-                onChange={onChange}
-                onSubmit={handleSubmit}
-              >
+              <form className={classes.form}>
                 <div>
                   <img src="/img/coeposter.jpg" className={classes.poster} />
                 </div>
@@ -64,85 +80,93 @@ export default function SectionLogin() {
                     <CustomInput
                       labelText="Density (kg/m^3)"
                       id="density"
+                      name="density"
+                      onChange={handleChange}
+                      value={density}
                       formControlProps={{
                         fullWidth: true,
                       }}
                       inputProps={{
                         type: "number",
                         autoComplete: "off",
-                        value: { data },
                       }}
                     />
                     <CustomInput
                       labelText="Specific Heat (J/kg.K)"
                       id="specificHeat"
+                      name="specificHeat"
+                      onChange={handleChange}
                       formControlProps={{
                         fullWidth: true,
                       }}
                       inputProps={{
                         type: "number",
                         autoComplete: "off",
-                        value: { data },
                       }}
                     />
                     <CustomInput
                       labelText="Thermal Conductivity  (W/m.K)"
                       id="thermalConductivity"
+                      name="thermalConductivity"
+                      onChange={handleChange}
                       formControlProps={{
                         fullWidth: true,
                       }}
                       inputProps={{
                         type: "number",
                         autoComplete: "off",
-                        value: { data },
                       }}
                     />
                     <CustomInput
                       labelText="Particle Size (µm)"
                       id="particleSize"
+                      name="particleSize"
+                      onChange={handleChange}
                       formControlProps={{
                         fullWidth: true,
                       }}
                       inputProps={{
                         type: "number",
                         autoComplete: "off",
-                        value: { data },
                       }}
                     />
                     <CustomInput
                       labelText="Particle Pressure (bar)"
                       id="pressure"
+                      name="pressure"
+                      onChange={handleChange}
                       formControlProps={{
                         fullWidth: true,
                       }}
                       inputProps={{
                         type: "number",
                         autoComplete: "off",
-                        value: { data },
                       }}
                     />
                     <CustomInput
                       labelText="Particle Temperature (°C)"
                       id="temperature"
+                      name="temperature"
+                      onChange={handleChange}
                       formControlProps={{
                         fullWidth: true,
                       }}
                       inputProps={{
                         type: "number",
                         autoComplete: "off",
-                        value: { data },
                       }}
                     />
                     <CustomInput
                       labelText="Divergent Lenght (mm)"
                       id="divergentLength"
+                      name="divergentLength"
+                      onChange={handleChange}
                       formControlProps={{
                         fullWidth: true,
                       }}
                       inputProps={{
                         type: "number",
                         autoComplete: "off",
-                        value: { data },
                       }}
                     />
                   </CardBody>
