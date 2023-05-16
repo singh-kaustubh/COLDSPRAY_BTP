@@ -9,7 +9,6 @@ import GridItem from "../components/Grid/GridItem";
 import Parallax from "../components/Parallax/Parallax";
 import SectionLogin from "../pages-sections/Components-Sections/SectionLogin";
 import styles from "../styles/jss/nextjs-material-kit/pages/components";
-
 const useStyles = makeStyles(styles);
 
 export default function Components(props) {

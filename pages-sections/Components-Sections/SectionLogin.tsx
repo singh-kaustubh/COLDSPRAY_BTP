@@ -11,6 +11,7 @@ import CardFooter from "../../components/Card/CardFooter";
 import Button from "../../components/CustomButtons/Button";
 import CustomInput from "../../components/CustomInput/CustomInput";
 import styles from "../../styles/jss/nextjs-material-kit/pages/componentsSections/loginStyle";
+import SnackbarContent from "../../components/Snackbar/SnackbarContent";
 
 const useStyles = makeStyles(styles);
 
@@ -27,7 +28,7 @@ export default function SectionLogin() {
   const [thermalConductivity, setThermalConductivity] = useState<number>();
   const [particleSize, setParticleSize] = useState<number>();
   const [divergentLength, setDivergentLength] = useState<number>();
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
     const input = {
       SpecificHeat: specificHeat,
@@ -46,7 +47,9 @@ export default function SectionLogin() {
       )} m/s and Temperature:${response.data.predictiontemp.toPrecision(6)} K`
     );
   };
-  const handleChange = (e) => {
+  const handleChange = (e: {
+    target: { name: string; value: React.SetStateAction<number | undefined> };
+  }) => {
     if (e.target.name == "density") {
       setDensity(e.target.value);
     } else if (e.target.name == "temperature") {
@@ -66,6 +69,12 @@ export default function SectionLogin() {
   const classes = useStyles();
   return (
     <div className={classes.section}>
+      <SnackbarContent
+        message={"Hi this is a message"}
+        color="info"
+        close={true}
+        className={classes.snackBar}
+      ></SnackbarContent>
       <div className={classes.container}>
         <GridContainer justify="center">
           <GridItem xs={12} sm={6} md={4}>

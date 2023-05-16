@@ -29,7 +29,8 @@ app = FastAPI()
 @app.post("/predict")
 def call_model(input: ModelInput) -> ModelOutput:
 
-    data = pd.read_excel('/Users/kaustubh/nextjs-material-kit/pythonBackend/ML data.xlsx', sheet_name='Ml format')
+    data = pd.read_excel(
+        '/Users/kaustubh/nextjs-material-kit/pythonBackend/ML data.xlsx', sheet_name='Ml format')
     data1 = data
     data = data.drop('Particle Temperature', axis=1)
     s = setup(data, target='Particle Velocity',
@@ -47,7 +48,7 @@ def call_model(input: ModelInput) -> ModelOutput:
     exp.setup(data, target='Particle Velocity',
               session_id=123, fold=3, use_gpu=True)
     best = compare_models()
-    holdout_pred = predict_model(best)
+    # holdout_pred = predict_model(best)
     inputs = [{'Specific Heat': sh, 'Th Conductivity': tc, 'Density': dens,
                'Particle Size': ps, 'Pressure': pres, 'Temperature': temp, 'Divergent Length': dl}]
     new_data = pd.DataFrame(inputs)
@@ -65,7 +66,7 @@ def call_model(input: ModelInput) -> ModelOutput:
     exp1.setup(data1, target='Particle Temperature',
                session_id=123, fold=3, use_gpu=True)
     best1 = compare_models()
-    holdout_pred1 = predict_model(best1)
+    # holdout_pred1 = predict_model(best1)
     predictions1 = predict_model(best1, data=new_data1)
     lst1 = predictions1['prediction_label'].tolist()
     result1 = lst1[-1]
