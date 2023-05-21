@@ -16,7 +16,7 @@ const useStyles = makeStyles(styles);
 export default function SnackbarContent(props: SnackbarContentProps) {
   const { message, color, close, icon } = props;
   const classes = useStyles();
-  var action:JSX.Element[] = [];
+  var action: JSX.Element[] = [];
   const closeAlert = () => {
     setAlert(null);
   };
@@ -33,9 +33,9 @@ export default function SnackbarContent(props: SnackbarContentProps) {
       </IconButton>,
     ];
   }
-  let snackIcon: JSX.Element|null = null;
-  if(icon) {
-    if(typeof icon === 'string') {
+  let snackIcon: JSX.Element | null = null;
+  if (icon) {
+    if (typeof icon === "string") {
       snackIcon = <Icon className={classes.icon}>{props.icon}</Icon>;
     } else {
       snackIcon = <props.icon className={classes.icon} />;

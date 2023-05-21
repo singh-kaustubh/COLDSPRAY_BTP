@@ -68,9 +68,6 @@ const loginStyle = {
   inputIconsColor: {
     color: "#495057",
   },
-  snackBar: {
-    position: "fixed top",
-  },
 };
 
 export default loginStyle;

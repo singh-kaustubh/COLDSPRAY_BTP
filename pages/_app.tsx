@@ -3,9 +3,7 @@ import ReactDOM from "react-dom";
 import App from "next/app";
 import Head from "next/head";
 import Router from "next/router";
-
 import PageChange from "../components/PageChange/PageChange";
-
 import "/styles/scss/nextjs-material-kit.scss?v=1.2.0";
 
 Router.events.on("routeChangeStart", (url) => {
@@ -28,16 +26,13 @@ Router.events.on("routeChangeError", () => {
 export default class MyApp extends App {
   static async getInitialProps({ Component, router, ctx }) {
     let pageProps = {};
-
     if (Component.getInitialProps) {
       pageProps = await Component.getInitialProps(ctx);
     }
-
     return { pageProps };
   }
   render() {
     const { Component, pageProps } = this.props;
-
     return (
       <React.Fragment>
         <Head>

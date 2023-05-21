@@ -9,6 +9,8 @@ import GridItem from "../components/Grid/GridItem";
 import Parallax from "../components/Parallax/Parallax";
 import SectionLogin from "../pages-sections/Components-Sections/SectionLogin";
 import styles from "../styles/jss/nextjs-material-kit/pages/components";
+import SnackbarContent from "../components/Snackbar/SnackbarContent";
+
 const useStyles = makeStyles(styles);
 
 export default function Components(props) {
@@ -26,6 +28,17 @@ export default function Components(props) {
           color: "white",
         }}
         {...rest}
+      />
+      <SnackbarContent
+        message={
+          <span>
+            <b>INFO ALERT:</b> You've got some friends nearby, stop looking at
+            your phone and find them...
+          </span>
+        }
+        close
+        color="info"
+        icon="info_outline"
       />
       <Parallax image="/img/landing-bg.jpg">
         <div className={classes.container}>
