@@ -19,7 +19,7 @@ type ModelOutput = {
   predictiontemp: number;
 };
 
-export default function SectionLogin() {
+export default function ContentPage() {
   const classes = useStyles();
   const [density, setDensity] = useState<number>();
   const [temperature, setTemperature] = useState<number>();

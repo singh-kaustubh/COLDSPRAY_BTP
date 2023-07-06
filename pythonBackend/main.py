@@ -30,7 +30,7 @@ app = FastAPI()
 def call_model(input: ModelInput) -> ModelOutput:
 
     data = pd.read_excel(
-        '/Users/kaustubh/nextjs-material-kit/pythonBackend/ML data.xlsx', sheet_name='Ml format')
+        '/Users/kaustubh/nextjs-material-kit/pythonBackend/ML data.xlsx', sheet_name='Ml data')
     data1 = data
     data = data.drop('Particle Temperature', axis=1)
     s = setup(data, target='Particle Velocity',
