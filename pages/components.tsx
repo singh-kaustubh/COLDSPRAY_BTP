@@ -12,7 +12,7 @@ import styles from "../styles/jss/nextjs-material-kit/pages/components";
 
 const useStyles = makeStyles(styles);
 
-export default function Components(props: { [x: string]: any; }) {
+export default function Components(props: { [x: string]: any }) {
   const classes = useStyles();
   const { ...rest } = props;
   return (

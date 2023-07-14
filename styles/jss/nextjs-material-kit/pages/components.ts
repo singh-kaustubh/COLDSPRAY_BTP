@@ -1,25 +1,26 @@
+import { CSSProperties } from "@material-ui/core/styles/withStyles";
 import { container } from "../../nextjs-material-kit";
 
 const componentsStyle = {
   container,
   brand: {
     color: "#FFFFFF",
-    textAlign: "left",
+    textAlign: "left" as const,
   },
   title: {
-    fontSize: "4.2rem",
-    fontWeight: "600",
+    fontSize: "4.2rem" as CSSProperties["fontSize"],
+    fontWeight: "600" as CSSProperties["fontWeight"],
     display: "inline-block",
-    position: "relative",
+    position: "relative" as CSSProperties["position"],
   },
   subtitle: {
-    fontSize: "1.313rem",
+    fontSize: "1.313rem" as CSSProperties["fontSize"],
     margin: "10px 0 0",
   },
   main: {
     background: "#FFFFFF",
-    position: "relative",
-    zIndex: "3",
+    position: "relative" as CSSProperties["position"],
+    zIndex: "3" as CSSProperties["zIndex"],
   },
   mainRaised: {
     margin: "-60px 30px 0px",
@@ -35,7 +36,7 @@ const componentsStyle = {
     textDecoration: "none",
   },
   textCenter: {
-    textAlign: "center",
+    textAlign: "center" as CSSProperties["textAlign"],
   },
   rprlogo: {
     height: "100px",
